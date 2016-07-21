@@ -53,6 +53,23 @@ spEMD(data, zcol = "z", method = "splines", n.imf.max = 10,
 \description{
 2D EMD for spatial objects
 }
+\examples{
+# Getting sample data from the gstat package
+if (require(gstat)) {
+library(sp)
+
+# Example for gridded data
+data(ncp.grid, package = 'gstat')
+coordinates(ncp.grid) <- ~x+y
+gridded(ncp.grid) <- TRUE
+res.ncp <- spEMD(ncp.grid, zcol = "depth", thresh.extrema = 0.1, verbose = FALSE)
+
+# Plot results
+spplot(res.ncp[, c('imf1', "imf2", "imf3")])
+}
+
+#
+}
 \author{
 Pierre Roudier
 }
