@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/23397/pierreroudier/spemd.svg)](https://zenodo.org/badge/latestdoi/23397/pierreroudier/spemd)
+
 # `spemd`: A bi-dimensional implementation of the Empirical Mode Decomposition (EMD)
 
 This package is still under development.
