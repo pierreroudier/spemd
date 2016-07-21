@@ -6,6 +6,8 @@ Authors@R: person("Pierre", "Roudier", email = "pierre.roudier@gmail.com", role 
 Description: This is a bi-dimensional implementation of the Empirical Mode
     DEcomposition (EMD) for spatial data. It can handle both gridded or un-gridded
     datasets.
+URL: https://github.com/pierreroudier/spemd
+BugReports: https://github.com/pierreroudier/spemd/issues
 Depends:
     R (>= 3.2.3)
 License: GPL-3
