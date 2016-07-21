@@ -1,15 +1,18 @@
 Package: spemd
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph)
-Depends:
+Title: A Bi-Dimensional Implementation of the Empirical Mode Decomposition for Spatial Data
+Version: 0.1-0
+Authors@R: person("Pierre", "Roudier", email = "pierre.roudier@gmail.com", role = c("aut", "cre"))
+Description: This is a bi-dimensional implementation of the Empirical Mode DEcomposition (EMD) for spatial data. It can handle both gridded or un-gridded datasets.
+Depends: 
     R (>= 3.2.3)
 License: What license is it under?
 LazyData: true
-Collate:
+Collate: 
     'create_neig.r'
     'extract_extrema.r'
     'extrema_irr.r'
     'mean_enveloppe.r'
     'spemd.r'
+Imports: sp,
+    spdep,
+    MBA
