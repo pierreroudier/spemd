@@ -14,13 +14,8 @@ Collate:
     'create_neig.r'
     'extract_extrema.r'
     'extrema_irr.r'
-    'lm.r'
-    'map.r'
     'mean_enveloppe.r'
-    'plot.r'
-    'reconstruct.r'
     'spemd.r'
-    'variogram.r'
 Imports:
     sp,
     spdep,
