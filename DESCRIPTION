@@ -1,11 +1,10 @@
 Package: spemd
 Title: A Bi-Dimensional Implementation of the Empirical Mode Decomposition for
     Spatial Data
-Version: 0.1-0
+Version: 0.1-1
 Authors@R: person("Pierre", "Roudier", email = "pierre.roudier@gmail.com", role = c("aut", "cre"))
-Description: This is a bi-dimensional implementation of the Empirical Mode
-    DEcomposition (EMD) for spatial data. It can handle both gridded or un-gridded
-    datasets.
+Description: This implementation of the Empirical Mode Decomposition (EMD) works in 2 dimensions simulatenously, and 
+    can be applied on spatial data. It can handle both gridded or un-gridded datasets.
 URL: https://github.com/pierreroudier/spemd
 BugReports: https://github.com/pierreroudier/spemd/issues
 Depends:
@@ -22,3 +21,6 @@ Imports:
     sp,
     spdep,
     MBA
+Suggests:
+    gstat
+RoxygenNote: 6.0.1

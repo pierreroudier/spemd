@@ -1,8 +1,17 @@
 #' @title extrema.irr
+#' @description Internal function, finds regional extrema on a irregularly sampled data set
 #' @aliases  extrema.irr
+#' @param data.set .
+#' @param gridded.data .
+#' @param neig Neighbourhood object.
+#' @param zcol Name of the column containing the data.
+#' @param duplicate What to do with duplicates. Defaults to `remove`.
+#' @param nb.nn Number of nearest neighbours to take into account if data is on a grid. Defaults to 4.
+#' @param thresh.extrema Significative threshold for the extrema. Defaults to 1.
+#' @param verbose Prints progress information messages. Defaults to FALSE.
 #' @author Pierre Roudier
-#' @description Finds regional extrema on a irregularly sampled data set
 #' @include create_neig.r
+#'
 extrema.irr <- function(
   data.set,
   gridded.data,
@@ -18,7 +27,7 @@ extrema.irr <- function(
     cat("\t\tWARNING : Old-style neig generation. This might be time-consuming.\n")
     neig <- create.neig(
       data.set,
-      gridded.data = gridded.data,
+      # gridded.data = gridded.data,
       nb.nn = nb.nn,
       duplicate = 'remove',
       verbose = verbose

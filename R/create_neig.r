@@ -1,13 +1,18 @@
 #' @title create.neig
+#' @description Internal function, initiates the neighbourhood relationships between the points in the processed data set.
 #' @aliases  create.neig
+#' @param data.set Data set to create neighbourhood from.
+#' @param nb.nn Number of nearest neighbours. Defaults to 4.
+#' @param duplicate Ignored.
+#' @param verbose Prints progress information messages. Defaults to FALSE.
 #' @author Pierre Roudier
-#' @description Initiates the neighbourhood relationships between the points in the processed data set
-#' @import sp spdep
+#' @importFrom sp coordinates
+#' @importFrom spdep knearneigh knn2nb
 create.neig <- function(
   data.set,
   # gridded.data,
   nb.nn = 4,
-  duplicate='remove',
+  duplicate = 'remove',
   verbose = FALSE
 ){
 
@@ -19,7 +24,7 @@ create.neig <- function(
 
 
   # Finding nearest neighbours
-  data.set.nn <- knearneigh(as.matrix(coords),k=nb.nn,longlat=FALSE)
+  data.set.nn <- knearneigh(as.matrix(coords), k = nb.nn, longlat = FALSE)
   # Converting to nb object
   data.set.nb <- knn2nb(data.set.nn)
 
@@ -28,46 +33,6 @@ create.neig <- function(
   neig$y <- coords[,2]
   neig$n <- nrow(coords)
   neig$neig <- data.set.nb
-
-  # }
-  # else {
-  #   require(tripack)
-  #   if (verbose) cat("\t\tGenerating neighbourhood relationships...\n")
-  #   # Creating a triangulation
-  #   if (verbose) cat("\t\t\tTriangulation of the data set...\t")
-  #   neig <- tri.mesh(coords,duplicate=duplicate)
-  #
-  #
-  #   if (TEST <- TRUE) {
-  #     source("pruned_neig.R")
-  #     require(rgeos)
-  #     require(rgdal)
-  #     bound.shp <- "/home/pierre/Documents/Travail/ACPA/Data/Hassall/swamp/boundary/Swamp.shp"
-  #     bound <- readOGR("/home/pierre/Documents/Travail/ACPA/Data/Hassall/swamp/boundary/Swamp.shp", layer="Swamp")
-  #     if (verbose) cat("tri.asSplines\n")
-  #     neig.sl <- tri.asSpLines(neig)
-  #     if (verbose) cat("gCrosses\n")
-  #     out <- gCrosses(neig.sl,bound,byid=TRUE)
-  #     neig <- neig.sl[!out,]
-  #     if (verbose) cat("sapply\n")
-  #     id.neighbours <- t(sapply(row.names(neig), function(x){as.numeric(unlist(strsplit(x, " ")))},USE.NAMES=FALSE))
-  #     if (verbose) cat("getNeig\n")
-  #     my.neig <- getNeig(id.neighbours)
-  #     if (verbose) cat("ok\n")
-  #     neig <- list()
-  #     neig$neig <- my.neig
-  #     neig$x <- coords[,1]
-  #     neig$y <- coords[,2]
-  #     neig$n <- nrow(coords)
-  #     class(neig) <- "neig"
-  #   }
-  #
-  #   if (verbose) cat("Done.\n")
-  #   # Adding neighbours informations
-  #   if (verbose) cat("\t\t\tConverting to neighbourhood object...\t")
-  #   if (!TEST) neig$neig <- neighbours(neig)
-  #   if (verbose) cat("Done.\n")
-  # }
 
   class(neig) <- c(class(neig),"neig")
 

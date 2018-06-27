@@ -1,7 +1,9 @@
 #' @title extract.extrema
+#' @description Internal function, explicitely returns a list with the tri objects of the extrema.
 #' @aliases  extract.etxrema
+#' @param tri.obj .
+#' @param n.extrema.min .
 #' @author Pierre Roudier
-#' @description Explicitely returns a list with the tri objects of the extrema
 #'
 extract.extrema <- function(
   tri.obj,

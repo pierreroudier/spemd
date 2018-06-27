@@ -4,24 +4,23 @@
 #' @description 2D EMD for spatial objects
 #' @author Pierre Roudier
 #'
-#' @param data .
-#' @param zcol .
-#' @param method .
-#' @param n.imf.max .
-#' @param n.sp.max .
-#' @param n.extrema.min .
-#' @param stoprule .
-#' @param stoprule.extrema .
-#' @param thresh.extrema .
-#' @param tol .
-#' @param diff.nb.extrema
-#' @param abs.nb.extrema .
-#' @param nb.nn .
-#' @param n.pts.spline .
-#' @param neig .
-#' @param save_neig .
-#' @param file .
-#' @param verbose .
+#' @param data Input dataset, either a `data.frame` or a `Spatial*DataFrame`
+#' @param zcol Name of the column containing the attribute of interest.
+#' @param method Interpolation method. Currently only `splines` is supported.
+#' @param n.imf.max Maximum depth of decomposition (maximum number of IMF).
+#' @param n.sp.max Number of iterations in the sifting process.
+#' @param n.extrema.min Minimum number of extrema.
+#' @param stoprule Rule used to stop the EMD process. Currently only `mean.imf` is implemented.
+#' @param stoprule.extrema Should `spEMD` checks for the number of extrema to be similar? Defaults to `TRUE`.
+#' @param thresh.extrema Significative threshold for the extrema. Defaults to 1.
+#' @param tol Value that the avergae of the IMF candidate need to reach so to be considered as a valid IMF.
+#' @param diff.nb.extrema Percentage limit difference maxima/minima. If smaller, more permissive on the mean of the IMF candidate.
+#' @param abs.nb.extrema Absolute difference between number of extrema.
+#' @param nb.nn Number of nearest neighbours to take into account (when data is on a regular grid).
+#' @param n.pts.spline Number of points to locally interpolate IMFs.
+#' @param neig Option the re-use a formerly existing neig object in order to save time.
+#' @param save_neig Option to save the neig object as a .RData file once created.
+#' @param verbose Prints progress information messages. Defaults to TRUE.
 #'
 #' @return .
 #'
@@ -46,17 +45,17 @@
 #'
 #' @include create_neig.r extrema_irr.r extract_extrema.r mean_enveloppe.r
 #'
-#' @import sp
+#' @importFrom sp coordnames gridded coordinates "coordinates<-" "coordnames<-" "gridded<-"
 #' @export
 spEMD <- function(
   # DATA
   data,	# Input matrix at the data.frame or sp format
-  zcol="z",
+  zcol = "z",
   # METHOD
   method = 'splines', # Enveloppe interpolation method
-  n.imf.max=10,	# Maximum depth ofdecomposition (number of IMFs)
+  n.imf.max=10,	# Maximum depth of decomposition (number of IMFs)
   n.sp.max=5,	# Number of iterations in the sifting process
-  n.extrema.min=1, # Minimum number of extrema
+  n.extrema.min=1, # Number of extrema below which the data is monotone. Defaults to 1.
   stoprule="mean.imf",
   stoprule.extrema=TRUE, # Also checks for the number of extrema to be similar
   # THRESHOLDS
@@ -178,7 +177,7 @@ spEMD <- function(
 
         mean.enveloppe <- return.mean.enveloppe(
           extrema = curr.mat.extrema$extrema,
-          donnee = input.imf,
+          data = input.imf,
           method = method,
           n.pts.spline = n.pts.spline,
           zcol = zcol,
