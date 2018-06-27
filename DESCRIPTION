@@ -3,7 +3,7 @@ Title: A Bi-Dimensional Implementation of the Empirical Mode Decomposition for
     Spatial Data
 Version: 0.1-1
 Authors@R: person("Pierre", "Roudier", email = "pierre.roudier@gmail.com", role = c("aut", "cre"))
-Description: This implementation of the Empirical Mode Decomposition (EMD) works in 2 dimensions simulatenously, and 
+Description: This implementation of the Empirical Mode Decomposition (EMD) works in 2 dimensions simultaneously, and 
     can be applied on spatial data. It can handle both gridded or un-gridded datasets.
 URL: https://github.com/pierreroudier/spemd
 BugReports: https://github.com/pierreroudier/spemd/issues
