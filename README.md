@@ -1,12 +1,17 @@
 [![DOI](https://zenodo.org/badge/23397/pierreroudier/spemd.svg)](https://zenodo.org/badge/latestdoi/23397/pierreroudier/spemd)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spemd)](https://cran.r-project.org/package=spemd)
 
 # `spemd`: A bi-dimensional implementation of the Empirical Mode Decomposition (EMD)
 
-This package is still under development.
-
 ## Installation
 
-You can install it using the `devtools` package:
+The package is now available on CRAN:
+
+```
+install.packages("spemd")
+```
+
+Alternatively, you can install the development version using the `devtools` package:
 
 ```
 devtools::install_github("pierreroudier/spemd")
