@@ -1,5 +1,6 @@
 [![DOI](https://zenodo.org/badge/23397/pierreroudier/spemd.svg)](https://zenodo.org/badge/latestdoi/23397/pierreroudier/spemd)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/spemd)](https://cran.r-project.org/package=spemd)
+[![Total_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/spemd)](https://cran.r-project.org/package=spemd)
 
 # `spemd`: A bi-dimensional implementation of the Empirical Mode Decomposition (EMD)
 
